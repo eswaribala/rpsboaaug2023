@@ -37,4 +37,71 @@ public class IndividualController {
     {
         return this.individualService.getAllIndividuals();
     }
+
+    @GetMapping({"/v1.0/{customerId}"})
+    public ResponseEntity<ResponseWrapper> getIndividualByCustomerId(@PathVariable("customerId") long customerId)
+    {
+        Individual obj=this.individualService.getIndividualById(customerId);
+        if(obj!=null){
+
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseWrapper(obj));
+        }
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseWrapper("Individual not found"));
+
+    }
+
+
+    @GetMapping({"/v1.0/contacts/{contactNo}"})
+    public ResponseEntity<ResponseWrapper> getIndividualByContactNo(@PathVariable("contactNo") long contactNo)
+    {
+        List<Individual> individuals=this.individualService.getIndividualByContactNo(contactNo);
+        if(individuals.size()>0){
+
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseWrapper(individuals));
+        }
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseWrapper("Individual not found"));
+
+    }
+    @GetMapping({"/v1.0/names/{firstName}"})
+    public ResponseEntity<ResponseWrapper> getIndividualByFIrstName(@PathVariable("firstName") String firstName)
+    {
+        List<Individual> individuals=this.individualService.getIndividualByFirstName(firstName);
+        if(individuals.size()>0){
+
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseWrapper(individuals));
+        }
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseWrapper("Individual not found"));
+
+    }
+
+    @PutMapping({"/v1.0/{customerId}"})
+
+    public ResponseEntity<ResponseWrapper> updateIndividual(@PathVariable("customerId") long customerId,@RequestParam("email") String email){
+
+        Individual obj=this.individualService.updateIndividualByCustomerId(customerId,email);
+        if(obj!=null){
+
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseWrapper(obj));
+        }
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseWrapper("Individual not updated"));
+
+    }
+    @DeleteMapping({"/v1.0/{customerId}"})
+
+    public ResponseEntity<ResponseWrapper> deleteIndividual(@PathVariable("customerId") long customerId){
+
+
+        if(this.individualService.deleteIndividualByCustomerId(customerId)){
+
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseWrapper("Individual Deleted Successfully"));
+        }
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseWrapper("Individual not deleted"));
+
+    }
+
 }
