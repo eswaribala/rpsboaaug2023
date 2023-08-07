@@ -39,12 +39,12 @@ public class IndividualService {
         return this.individualRepo.findById(customerId).orElse(null);
     }
 
-
+//non primary key
     public List<Individual> getIndividualByContactNo(long contactNo){
         return this.individualRepo.findByContactNo(contactNo);
     }
 
-
+//non primary key
     public List<Individual> getIndividualByFirstName(String firstName){
 
         CriteriaBuilder cb= entityManager.getCriteriaBuilder();
