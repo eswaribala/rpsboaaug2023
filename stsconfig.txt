@@ -1,0 +1,19 @@
+-startup
+plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar
+--launcher.library
+plugins/org.eclipse.equinox.launcher.win32.win32.x86_64_1.1.1100.v20190907-0426
+-product
+org.springframework.boot.ide.branding.sts4
+--launcher.defaultAction
+openFile
+-vm
+C:/Program Files/Java/jdk1.8.0_152/bin/javaw.exe
+-vmargs
+-javaagent:lombok.jar
+-Dosgi.requiredJavaVersion=1.8
+-Xms256m
+-Xmx1024m
+-XX:+UseG1GC
+-XX:+UseStringDeduplication
+--add-modules=ALL-SYSTEM
+-javaagent:E:\software\A08\file\sts-4.5.0.RELEASE\lombok.jar
