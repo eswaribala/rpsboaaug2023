@@ -10,8 +10,6 @@ type Address {
 
 
 
-
-
 extend type Query{
 
     findAllAddresses:[Address]
