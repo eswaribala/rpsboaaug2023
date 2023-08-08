@@ -1,5 +1,6 @@
 schema {
     query: Query
+    mutation: Mutation
 }
 
 scalar  Date
@@ -45,5 +46,29 @@ type Query{
     findIndividualByFirstName(firstName: String): [Individual]
     findIndividualByContactNo(contactNo: Long): [Individual]
 
+
+}
+
+input IndividualInput{
+    customerId: Long
+    name: FullNameInput
+    contactNo: Long
+    password: String
+    email: String
+    dob: Date
+    gender: Gender
+}
+
+
+input FullNameInput{
+    firstName: String
+    middleName: String
+    lastName: String
+}
+
+type Mutation{
+    addIndividual(individualInput:IndividualInput):Individual
+    updateIndividual(customerId:Long, email:String):Individual
+    deleteIndividual(customerId:Long):Boolean
 
 }
