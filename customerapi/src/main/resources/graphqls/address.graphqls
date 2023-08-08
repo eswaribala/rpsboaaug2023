@@ -37,7 +37,7 @@ input CustomerInput{
 }
 
 extend type Mutation{
-    addAddress(AddressInput:AddressInput):Address
+    addAddress(customerId:Long,addressInput:AddressInput):Address
     updateAddress(addressId:Long, doorNo:String):Address
     deleteAddress(addressId:Long):Boolean
 
