@@ -16,28 +16,38 @@ public class AddressMutation implements GraphQLMutationResolver {
 
 
     public Address addAddress(long customerId,AddressInput addressInput){
+        Address address=null;
+       if(addressInput.getCustomer()!=null) {
+           address = Address.builder()
+                   .addressId(addressInput.getAddressId())
+                   .city(addressInput.getCity())
+                   .doorNo(addressInput.getDoorNo())
+                   .pincode(addressInput.getPincode())
+                   .streetName(addressInput.getStreetName())
+                   .customer(Customer.builder()
+                           .customerId(addressInput.getCustomer().getCustomerId())
+                           .contactNo(addressInput.getCustomer().getContactNo())
+                           .email(addressInput.getCustomer().getEmail())
+                           .password(addressInput.getCustomer().getPassword())
 
-        Address address=Address.builder()
-                .addressId(addressInput.getAddressId())
-                .city(addressInput.getCity())
-                .doorNo(addressInput.getDoorNo())
-                .pincode(addressInput.getPincode())
-                .streetName(addressInput.getStreetName())
-                .customer(Customer.builder()
-                        .customerId(addressInput.getCustomer().getCustomerId())
-                        .contactNo(addressInput.getCustomer().getContactNo())
-                        .email(addressInput.getCustomer().getEmail())
-                        .password(addressInput.getCustomer().getPassword())
+                           .name(FullName.builder()
+                                   .firstName(addressInput.getCustomer().getName().getFirstName())
+                                   .lastName(addressInput.getCustomer().getName().getLastName())
+                                   .middleName(addressInput.getCustomer().getName().getMiddleName())
 
-                        .name(FullName.builder()
-                                .firstName(addressInput.getCustomer().getName().getFirstName())
-                                .lastName(addressInput.getCustomer().getName().getLastName())
-                                .middleName(addressInput.getCustomer().getName().getMiddleName())
-
-                        .build())
-                        .build())
-                .build();
-
+                                   .build())
+                           .build())
+                   .build();
+       }
+       else {
+           address = Address.builder()
+                   .addressId(addressInput.getAddressId())
+                   .city(addressInput.getCity())
+                   .doorNo(addressInput.getDoorNo())
+                   .pincode(addressInput.getPincode())
+                   .streetName(addressInput.getStreetName())
+                   .build();
+       }
 
 
         return this.addressService.addAddress(customerId,address);
