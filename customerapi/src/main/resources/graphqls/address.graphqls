@@ -18,3 +18,27 @@ extend type Query{
 
 
 }
+
+input AddressInput{
+    addressId: Long
+    doorNo: String
+    streetName: String
+    city: String
+    pincode: Long
+    customer: CustomerInput
+}
+
+input CustomerInput{
+    customerId: Long
+    name: FullNameInput
+    contactNo: Long
+    password: String
+    email: String
+}
+
+extend type Mutation{
+    addAddress(AddressInput:AddressInput):Address
+    updateAddress(addressId:Long, doorNo:String):Address
+    deleteAddress(addressId:Long):Boolean
+
+}

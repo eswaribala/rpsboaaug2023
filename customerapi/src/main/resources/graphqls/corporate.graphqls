@@ -25,3 +25,19 @@ extend type Query{
 
 
 }
+
+input CorporateInput{
+    customerId: Long
+    name: FullNameInput
+    contactNo: Long
+    password: String
+    email: String
+    companyType:CompanyType
+}
+
+extend type Mutation{
+    addCorporate(corporateInput:CorporateInput):Corporate
+    updateCorporate(customerId:Long, email:String):Corporate
+    deleteCorporate(customerId:Long):Boolean
+
+}
