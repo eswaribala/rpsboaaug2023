@@ -27,7 +27,12 @@ management:
         exposure:
            include: "*"  
            
-#apiUrl:
-   #http://localhost:9091/
-#api:
-    #tests/v1.0/admin/
+apiUrl:
+   http://localhost:9091/
+api:
+    tests/v1.0/admin/
+
+userName:
+   eswaribala
+password:
+   Test@123
