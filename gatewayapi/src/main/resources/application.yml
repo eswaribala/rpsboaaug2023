@@ -1,0 +1,32 @@
+server:
+  port: 8765
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka 
+
+spring:
+  application:
+    name: boa-gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+         - id: customer-api
+           uri: lb://CUSTOMER-API
+           predicates:
+              - Path=/individuals/v1.0
+management:
+    endpoints:
+       web:
+        exposure:
+           include: "*"  
+           
+#apiUrl:
+   #http://localhost:9091/
+#api:
+    #tests/v1.0/admin/
