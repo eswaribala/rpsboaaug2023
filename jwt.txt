@@ -1,0 +1,16 @@
+{
+    "userName":"eswaribala",
+    "password":"Test@123",
+    "roles":[{
+     "roleName":"ROLE_ADMIN"
+    },
+    {
+        "roleName":"ROLE_USER" 
+    }]
+}
+
+-------------------------
+{
+    "userName":"eswaribala",
+    "userPwd":"Test@123"
+}
