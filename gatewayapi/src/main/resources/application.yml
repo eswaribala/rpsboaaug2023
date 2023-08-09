@@ -19,7 +19,8 @@ spring:
          - id: customer-api
            uri: lb://CUSTOMER-API
            predicates:
-              - Path=/individuals/v1.0
+              - Path=/**
+
 management:
     endpoints:
        web:
