@@ -51,7 +51,7 @@ public class LoggingGlobalPreFilter implements GlobalFilter,Ordered {
     @Value("${api}")
     private String api;
 
-    @Value("${userName}")
+    @Value("${boauser}")
     private String userName;
 
     @Value("${password}")
@@ -89,8 +89,8 @@ public class LoggingGlobalPreFilter implements GlobalFilter,Ordered {
 
              //Redirect to JWT token
              JwtRequest jwtRequest=new JwtRequest();
-             jwtRequest.setUserName("eswaribala");
-             jwtRequest.setUserPwd("Test@123");
+             jwtRequest.setUserName(userName);
+             jwtRequest.setUserPwd(password);
 
              //step 2
 

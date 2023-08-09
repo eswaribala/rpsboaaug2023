@@ -32,7 +32,7 @@ apiUrl:
 api:
     tests/v1.0/admin/
 
-userName:
+boauser:
    eswaribala
 password:
    Test@123
