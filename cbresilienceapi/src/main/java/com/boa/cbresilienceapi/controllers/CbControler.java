@@ -15,4 +15,5 @@ public class CbControler {
     public String getData(){
         return this.cbService.getIndividuals();
     }
+   
 }
