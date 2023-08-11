@@ -1,4 +1,4 @@
-package com.boa.customerapi.dtos;
+package com.boa.transactionapi.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.boa.customerapi;
+package com.boa.transactionapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

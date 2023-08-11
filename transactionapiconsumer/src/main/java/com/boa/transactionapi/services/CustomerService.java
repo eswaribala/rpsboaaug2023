@@ -1,8 +1,8 @@
-package com.boa.customerapi.services;
+package com.boa.transactionapi.services;
 
-import com.boa.customerapi.dtos.Customer;
-import com.boa.customerapi.facades.CustomerFacade;
-import com.boa.customerapi.repositories.CustomerRepo;
+import com.boa.transactionapi.dtos.Customer;
+import com.boa.transactionapi.facades.CustomerFacade;
+import com.boa.transactionapi.repositories.CustomerRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.StreamListener;
