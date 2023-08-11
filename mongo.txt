@@ -1,0 +1,8 @@
+Docker exec -it <containerid> /bin/bash
+# mongosh
+show dbs;
+use custoemrdb
+show collections
+db.customers.find();
+
+
