@@ -3,17 +3,20 @@ package com.boa.customerapi.controllers;
 import com.boa.customerapi.dtos.ResponseWrapper;
 import com.boa.customerapi.models.Individual;
 import com.boa.customerapi.services.IndividualService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequestMapping("/individuals")
 public class IndividualController {
-
+    private static final Logger LOGGER = LogManager.getLogger(IndividualController.class);
     @Autowired
     private IndividualService individualService;
 
@@ -35,7 +38,15 @@ public class IndividualController {
     @GetMapping({"/v1.0/"})
     public List<Individual> getAllIndividuals()
     {
-        return this.individualService.getAllIndividuals();
+        LOGGER.info(LocalDate.now()+"Fetching Data");
+        List<Individual> individuals=this.individualService.getAllIndividuals();
+        for(Individual individual : individuals)
+            LOGGER.info(individual);
+        LOGGER.debug("Debug level log message");
+        LOGGER.error("Error level log message");
+
+
+        return individuals;
     }
 
     @GetMapping({"/v1.0/{customerId}"})
